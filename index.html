@@ -12,11 +12,8 @@
         .shimmer { animation: shimmer 2s infinite linear; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%); background-size: 200% 100%; }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
         
-        /* Re-added these for the card animations */
-        .animate-fade-up { opacity: 0; animation: fadeUp 0.8s ease-out forwards; }
-        .delay-100 { animation-delay: 0.2s; }
-        .delay-200 { animation-delay: 0.4s; }
-        .delay-300 { animation-delay: 0.6s; }
+        /* CSS Animation Keyframes */
+        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
         
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -84,38 +81,44 @@
                     </div>
                 </div>
 
-                <!-- ADDED FEATURE CARDS SECTION BACK -->
+                <!-- 
+                  FEATURE CARDS SECTION 
+                  Changes for Mobile:
+                  1. Added 'reveal-on-scroll' and 'opacity-0' classes to trigger animation via JS.
+                  2. Added 'active:' classes (active:scale-[1.02], etc.) for touch feedback.
+                -->
                 <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl text-left">
                     
                     <!-- Card 1 -->
-                    <div class="group relative p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-up delay-100">
+                    <div class="reveal-on-scroll opacity-0 group relative p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-emerald-500/50 active:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 active:-translate-y-1 hover:shadow-2xl active:shadow-xl hover:shadow-emerald-500/20 active:shadow-emerald-500/10 hover:scale-[1.02] active:scale-[1.02]">
                         <div class="h-48 rounded-xl overflow-hidden mb-4 relative">
-                            <!-- Overlay tint that vanishes on hover -->
-                            <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                            <img src="card1.png" alt="Map Location" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <!-- Overlay tint that vanishes on hover or active touch -->
+                            <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent group-active:bg-transparent transition-colors duration-500 z-10"></div>
+                            <img src="card1.png" alt="Map Location" class="w-full h-full object-cover transform group-hover:scale-110 group-active:scale-110 transition-transform duration-700">
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">Fill up</h3>
-                        <p class="text-slate-400 text-sm">Pay however you want, at whatever station.</p>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 group-active:text-emerald-400 transition-colors">Smart Detection</h3>
+                        <p class="text-slate-400 text-sm">Automatically finds the lowest prices near you instantly.</p>
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="group relative p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-up delay-200">
+                    <!-- Added delay via style attribute to handle dynamic delays nicely with JS -->
+                    <div class="reveal-on-scroll opacity-0 group relative p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-emerald-500/50 active:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 active:-translate-y-1 hover:shadow-2xl active:shadow-xl hover:shadow-emerald-500/20 active:shadow-emerald-500/10 hover:scale-[1.02] active:scale-[1.02]" style="transition-delay: 100ms; animation-delay: 100ms;">
                         <div class="h-48 rounded-xl overflow-hidden mb-4 relative">
-                            <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                            <img src="card2.png" alt="Gas Pump" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent group-active:bg-transparent transition-colors duration-500 z-10"></div>
+                            <img src="card2.png" alt="Gas Pump" class="w-full h-full object-cover transform group-hover:scale-110 group-active:scale-110 transition-transform duration-700">
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">Grab the Receipt</h3>
-                        <p class="text-slate-400 text-sm">Snap a picture. We'll find the cheapest gas in your area.</p>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 group-active:text-emerald-400 transition-colors">Instant Savings</h3>
+                        <p class="text-slate-400 text-sm">Never overpay at the pump again with real-time alerts.</p>
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="group relative p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-up delay-300">
+                    <div class="reveal-on-scroll opacity-0 group relative p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-emerald-500/50 active:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 active:-translate-y-1 hover:shadow-2xl active:shadow-xl hover:shadow-emerald-500/20 active:shadow-emerald-500/10 hover:scale-[1.02] active:scale-[1.02]" style="transition-delay: 200ms; animation-delay: 200ms;">
                         <div class="h-48 rounded-xl overflow-hidden mb-4 relative">
-                            <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                            <img src="card3.png" alt="Savings" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent group-active:bg-transparent transition-colors duration-500 z-10"></div>
+                            <img src="card3.png" alt="Savings" class="w-full h-full object-cover transform group-hover:scale-110 group-active:scale-110 transition-transform duration-700">
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">Get Funds</h3>
-                        <p class="text-slate-400 text-sm">Get the difference returned directly to your account.</p>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 group-active:text-emerald-400 transition-colors">Real Cash Back</h3>
+                        <p class="text-slate-400 text-sm">Get the difference deposited directly to your account.</p>
                     </div>
                     
                 </div>
@@ -134,5 +137,29 @@
         </div>
     </footer>
 
-</body>
-</html>
+    <script>
+        // Simple Intersection Observer to trigger animations when elements scroll into view
+        // This makes the "fade up" effect work on mobile where the content is below the fold
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove opacity-0 (hidden) and add animation class
+                        entry.target.classList.remove('opacity-0');
+                        entry.target.classList.add('animate-fade-up');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
